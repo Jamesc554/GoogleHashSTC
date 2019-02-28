@@ -28,11 +28,7 @@ public class Slideshow {
 			}
 		}
 
-		for (String tag : sld2.getTags()){
-			if (!sld1.getTags().contains(tag)){
-				uncommonB++;
-			}
-		}
+		uncommonB = sld2.getTags().size() - common;
 		
 		
 		return Math.min(uncommonA, Math.min(uncommonB, common));

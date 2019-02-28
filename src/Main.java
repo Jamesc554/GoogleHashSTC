@@ -12,7 +12,7 @@ public class Main {
         HashMap<String, Integer> tagCount = new HashMap<>();
         List<Photo> verticalPhotos = new ArrayList<>();
 
-        List<Photo> photos = FileReader.LoadPhotos("c_memorable_moments.txt");
+        List<Photo> photos = FileReader.LoadPhotos("d_pet_pictures.txt");
 
         for(Photo p : photos){
             for(String tag : p.GetTags()){
