@@ -25,4 +25,22 @@ public class Slide {
 		}
 		return allTags;
 	}
+
+	public int[] GetUncommonCommonTags(Slide s){
+		int[] amounts = new int[3];
+		for(String tag : s.getTags()){
+			if (getTags().contains(tag)){
+				amounts[0]++;
+			} else {
+				amounts[1]++;
+			}
+		}
+
+		for (String tag : getTags()){
+			if (!s.getTags().contains(s)){
+				amounts[2]++;
+			}
+		}
+		return amounts;
+	}
 }

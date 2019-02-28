@@ -41,5 +41,42 @@ public class Main {
         tagCount.entrySet().forEach(entry -> {
             System.out.println("Tag: " + entry.getKey() + " Amount: " + entry.getValue());
         });
+
+        List<Slide> newSlides = new ArrayList<>();
+        for (Slide slide : slides){
+            if (newSlides.contains(slide))
+                continue;
+
+            Slide bestSlide = null;
+            for (Slide nSlide : slides){
+                if (slide == nSlide || newSlides.contains(nSlide))
+                    continue;
+
+                if (bestSlide == null){
+                    bestSlide = nSlide;
+                } else {
+                    if (Slideshow.scoreSlides(slide, nSlide) > Slideshow.scoreSlides(slide, bestSlide)){
+                        bestSlide = nSlide;
+                    }
+                }
+            }
+            newSlides.add(slide);
+            newSlides.add(bestSlide);
+            System.out.println(slides.size());
+            System.out.println(newSlides.size());
+        }
+
+        for (Slide s : newSlides){
+            if (slides.contains(s)){
+                slides.remove(s);
+            }
+        }
+
+        newSlides.addAll(slides);
+
+
+
+        Slideshow ss = new Slideshow(newSlides);
+        System.out.println(ss.GetTotalScore());
     }
 }
