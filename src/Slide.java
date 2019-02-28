@@ -1,16 +1,18 @@
+import java.util.List;
+
 public class Slide {
 	
-	private Photo[] images = null;
+	private List<Photo> images = null;
 	
-	public Slide(Photo[] photos) {
+	public Slide(List<Photo> photos) {
 		this.images = photos;
 	}
 
-	public Photo[] getImages() {
+	public List<Photo> getImages() {
 		return images;
 	}
 
-	public void setImages(Photo[] images) {
+	public void setImages(List<Photo> images) {
 		this.images = images;
 	}
 }
