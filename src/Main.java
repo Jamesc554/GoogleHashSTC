@@ -1,14 +1,45 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Main {
 
     public static void main(String[] args) throws Exception{
         System.out.println("Hello, Charles!");
+        List<Slide> slides = new ArrayList<>();
+        HashMap<String, Integer> tagCount = new HashMap<>();
+        List<Photo> verticalPhotos = new ArrayList<>();
 
-        List<Photo> photos = FileReader.LoadPhotos("b_lovely_landscapes.txt");
+        List<Photo> photos = FileReader.LoadPhotos("c_memorable_moments.txt");
 
         for(Photo p : photos){
-            System.out.println(p.toString());
+            for(String tag : p.GetTags()){
+                if (tagCount.containsKey(tag)){
+                    int amount = tagCount.get(tag) + 1;
+                    tagCount.remove(tag);
+                    tagCount.put(tag, amount);
+                } else {
+                    tagCount.put(tag, 1);
+                }
+            }
+
+            if (p.isHorizontal()){
+                Slide s = new Slide(p);
+                slides.add(s);
+            } else {
+                verticalPhotos.add(p);
+            }
         }
+
+        for (int i = 0; i < verticalPhotos.size() / 2; i++){
+            Slide s = new Slide(verticalPhotos.get(i), verticalPhotos.get(i+1));
+            slides.add(s);
+        }
+
+        tagCount.entrySet().forEach(entry -> {
+            System.out.println("Tag: " + entry.getKey() + " Amount: " + entry.getValue());
+        });
     }
 }
