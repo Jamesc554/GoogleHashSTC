@@ -2,7 +2,7 @@ public class Slide {
 	
 	private Photo[] images = null;
 	
-	public Slide(Photo[] photos) {
+	public Slide(Photo... photos) {
 		this.images = photos;
 	}
 
