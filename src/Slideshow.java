@@ -16,15 +16,20 @@ public class Slideshow {
 	}
 	
 	static int scoreSlides(Slide sld1, Slide sld2) {
-		List<String>commonTags = null;
+		int uncommonA = 0;
+		int uncommonB = 0;
+		int common = 0;
 		//List<String>tags1 = sld1.getTags();
 		//List<String>tags2 = sld2.getTags();
 		
 		for (String tag: sld1.getTags()) {
 			if (sld2.getTags().contains(tag)) {
-				commonTags.add(tag);
+				common++;
+			} else if () {
+				
 			}
 		}
+		
 		
 		return 1;
 	}
